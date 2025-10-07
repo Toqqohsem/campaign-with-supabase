@@ -26,7 +26,7 @@ export function Dashboard({ campaigns, loading, error, onCreateCampaign, onSelec
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-cyan-100">
       <div className="container mx-auto px-4 py-8">
         <div className="max-w-6xl mx-auto">
           {/* Error Message */}
@@ -69,8 +69,8 @@ export function Dashboard({ campaigns, loading, error, onCreateCampaign, onSelec
                 <div className="text-gray-600">Active Campaigns</div>
               </div>
               <div className="bg-white rounded-xl p-6 shadow-lg text-center">
-                <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Users className="w-6 h-6 text-purple-600" />
+                <div className="w-12 h-12 bg-teal-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Users className="w-6 h-6 text-teal-600" />
                 </div>
                 <div className="text-2xl font-bold text-gray-900">
                   {campaigns.reduce((sum, campaign) => sum + campaign.personas.length, 0)}

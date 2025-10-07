@@ -170,7 +170,7 @@ export function LeadTagger({ leads, personas, onUpdateLeads, onTriggerPrediction
               <div className="text-gray-600 text-sm">Rejected</div>
             </div>
             <div className="bg-white rounded-lg p-4 text-center shadow-md">
-              <div className="text-2xl font-bold text-purple-600">{conversionRate}%</div>
+              <div className="text-2xl font-bold text-teal-600">{conversionRate}%</div>
               <div className="text-gray-600 text-sm">Conversion</div>
             </div>
           </div>
@@ -242,7 +242,7 @@ export function LeadTagger({ leads, personas, onUpdateLeads, onTriggerPrediction
                         <td className="px-6 py-4">
                           <div className="text-sm">
                             {lead.buyer_segment ? (
-                              <span className="px-2 py-1 bg-purple-100 text-purple-800 rounded-full text-xs font-medium">
+                              <span className="px-2 py-1 bg-teal-100 text-teal-800 rounded-full text-xs font-medium">
                                 {lead.buyer_segment}
                               </span>
                             ) : (
@@ -309,7 +309,7 @@ export function LeadTagger({ leads, personas, onUpdateLeads, onTriggerPrediction
                             {onTriggerPrediction && (
                               <button
                                 onClick={() => onTriggerPrediction(lead.id)}
-                                className="p-2 text-gray-400 hover:text-purple-600 transition-colors"
+                                className="p-2 text-gray-400 hover:text-teal-600 transition-colors"
                                 title="Trigger ML prediction"
                               >
                                 <RefreshCw className="w-4 h-4" />
@@ -477,7 +477,7 @@ export function LeadTagger({ leads, personas, onUpdateLeads, onTriggerPrediction
                       <select
                         value={editingLead.buyer_segment || ''}
                         onChange={(e) => updateLeadDetails({ buyer_segment: e.target.value || undefined })}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 text-sm"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 text-sm"
                       >
                         <option value="">Select segment</option>
                         <option value="First-time Buyer">First-time Buyer</option>

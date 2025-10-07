@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, LogOut } from 'lucide-react';
+import { useAuth } from './contexts/AuthContext';
 import { useCampaigns } from './hooks/useCampaigns';
 import { CampaignStep } from './types';
+import { AuthForms } from './components/AuthForms';
 import { Dashboard } from './components/Dashboard';
 import { CampaignWizard } from './components/CampaignWizard';
 import { PersonaCreator } from './components/PersonaCreator';
@@ -11,6 +13,7 @@ import { CampaignOverview } from './components/CampaignOverview';
 import PredictiveInsights from './components/PredictiveInsights';
 
 export default function App() {
+  const { user, loading: authLoading, signOut } = useAuth();
   const { 
     campaigns, 
     currentCampaign, 
@@ -78,6 +81,21 @@ export default function App() {
     setCurrentStep('overview');
   };
 
+  if (authLoading) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-cyan-100 flex items-center justify-center">
+        <div className="text-center">
+          <div className="w-16 h-16 border-4 border-blue-600 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+          <p className="text-gray-600">Loading...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (!user) {
+    return <AuthForms />;
+  }
+
   // Dashboard view
   if (currentStep === 'overview' && !currentCampaign) {
     return (
@@ -110,6 +128,18 @@ export default function App() {
 
   return (
     <div className="min-h-screen">
+      {/* Logout Button */}
+      <div className="absolute top-4 right-4 z-10">
+        <button
+          onClick={signOut}
+          className="flex items-center px-4 py-2 bg-white shadow-lg rounded-lg hover:shadow-xl transition-shadow text-gray-700 hover:text-red-600"
+          title="Sign out"
+        >
+          <LogOut className="w-4 h-4 mr-2" />
+          Sign Out
+        </button>
+      </div>
+
       {/* Back Navigation */}
       {showBackButton && (
         <div className="absolute top-4 left-4 z-10">

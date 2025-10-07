@@ -59,7 +59,7 @@ export default function PredictiveInsights({ campaign, buyerSegmentAnalytics = [
     const colors: Record<string, string> = {
       'First-time Buyer': 'bg-blue-100 text-blue-800',
       'Upgrader': 'bg-green-100 text-green-800',
-      'Investor': 'bg-purple-100 text-purple-800',
+      'Investor': 'bg-teal-100 text-teal-800',
       'Downsizer': 'bg-orange-100 text-orange-800',
       'Luxury Buyer': 'bg-yellow-100 text-yellow-800',
       'Budget Conscious': 'bg-red-100 text-red-800',
@@ -68,13 +68,13 @@ export default function PredictiveInsights({ campaign, buyerSegmentAnalytics = [
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-50 to-purple-100">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-teal-100">
       <div className="container mx-auto px-4 py-8">
         <div className="max-w-6xl mx-auto">
           {/* Header */}
           <div className="text-center mb-8">
             <h1 className="text-3xl font-bold text-gray-900 mb-2 flex items-center justify-center">
-              <Brain className="w-8 h-8 mr-3 text-purple-600" />
+              <Brain className="w-8 h-8 mr-3 text-blue-600" />
               Predictive Buyer Insights
             </h1>
             <p className="text-gray-600">AI-powered analysis of your campaign's buyer patterns and conversion potential</p>
@@ -83,8 +83,8 @@ export default function PredictiveInsights({ campaign, buyerSegmentAnalytics = [
           {/* Key Metrics */}
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
             <div className="bg-white rounded-xl p-6 shadow-lg text-center">
-              <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <TrendingUp className="w-6 h-6 text-purple-600" />
+              <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <TrendingUp className="w-6 h-6 text-blue-600" />
               </div>
               <div className="text-2xl font-bold text-gray-900">{(avgConversionLikelihood * 100).toFixed(1)}%</div>
               <div className="text-gray-600">Avg Conversion Score</div>
@@ -119,7 +119,7 @@ export default function PredictiveInsights({ campaign, buyerSegmentAnalytics = [
             {/* Buyer Segments */}
             <div className="bg-white rounded-xl shadow-lg p-6">
               <h2 className="text-xl font-bold text-gray-900 mb-6 flex items-center">
-                <PieChart className="w-5 h-5 mr-2 text-purple-600" />
+                <PieChart className="w-5 h-5 mr-2 text-teal-600" />
                 Buyer Segment Distribution
               </h2>
               
@@ -136,7 +136,7 @@ export default function PredictiveInsights({ campaign, buyerSegmentAnalytics = [
                       <div className="flex items-center space-x-3">
                         <div className="w-24 bg-gray-200 rounded-full h-2">
                           <div
-                            className="bg-purple-600 h-2 rounded-full"
+                            className="bg-teal-600 h-2 rounded-full"
                             style={{ width: `${percentage}%` }}
                           />
                         </div>
@@ -261,14 +261,14 @@ export default function PredictiveInsights({ campaign, buyerSegmentAnalytics = [
           {/* Recommendations */}
           <div className="mt-8 bg-white rounded-xl shadow-lg p-6">
             <h2 className="text-xl font-bold text-gray-900 mb-6 flex items-center">
-              <Brain className="w-5 h-5 mr-2 text-purple-600" />
+              <Brain className="w-5 h-5 mr-2 text-blue-600" />
               ML-Powered Recommendations
             </h2>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="bg-purple-50 rounded-lg p-4 border border-purple-200">
-                <h3 className="font-semibold text-purple-900 mb-2">Focus Areas</h3>
-                <ul className="text-sm text-purple-800 space-y-1">
+              <div className="bg-blue-50 rounded-lg p-4 border border-blue-200">
+                <h3 className="font-semibold text-blue-900 mb-2">Focus Areas</h3>
+                <ul className="text-sm text-blue-800 space-y-1">
                   {(highValueLeads.length > 0 ? highValueLeads : leads.filter(lead => (lead.predicted_conversion_likelihood || 0) > 0.7)).length > 0 && (
                     <li>• Prioritize follow-up with {(highValueLeads.length > 0 ? highValueLeads : leads.filter(lead => (lead.predicted_conversion_likelihood || 0) > 0.7)).length} high-value leads</li>
                   )}
@@ -294,11 +294,11 @@ export default function PredictiveInsights({ campaign, buyerSegmentAnalytics = [
             </div>
             
             {buyerSegmentAnalytics.length > 0 && (
-              <div className="mt-6 bg-blue-50 rounded-lg p-4 border border-blue-200">
-                <h3 className="font-semibold text-blue-900 mb-2">Model Performance Insights</h3>
+              <div className="mt-6 bg-teal-50 rounded-lg p-4 border border-teal-200">
+                <h3 className="font-semibold text-teal-900 mb-2">Model Performance Insights</h3>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   {buyerSegmentAnalytics.slice(0, 3).map((segment, index) => (
-                    <div key={index} className="text-sm text-blue-800">
+                    <div key={index} className="text-sm text-teal-800">
                       <div className="font-medium">{segment.buyer_segment}</div>
                       <div>Predicted: {(segment.avg_conversion_likelihood * 100).toFixed(1)}%</div>
                       <div>Actual: {segment.actual_conversion_rate}%</div>
